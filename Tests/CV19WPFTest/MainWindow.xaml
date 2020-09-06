@@ -6,6 +6,11 @@
         Title="MainWindow" 
         Height="450" Width="800">
     <Grid>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="33,44,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="246,44,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="219,118,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="388,118,0,0" VerticalAlignment="Top"/>
+        <Slider HorizontalAlignment="Left" Margin="134,203,0,0" VerticalAlignment="Top" Width="297" Height="12"/>
 
     </Grid>
 </Window>
