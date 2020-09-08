@@ -149,7 +149,7 @@ namespace CV19.ViewModels
             {
                 Name = $"Name {student_index}",
                 Surname = $"Surname {student_index}",
-                Patronymic = $"Patronymic {student_index}",
+                Patronymic = $"Patronymic {student_index++}",
                 Birthday = DateTime.Now,
                 Rating = 0
             });
@@ -161,9 +161,6 @@ namespace CV19.ViewModels
             });
 
             Groups = new ObservableCollection<Group>(groups);
-
-
-
         }
     }
 }
