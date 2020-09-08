@@ -18,6 +18,20 @@ namespace CV19.ViewModels
         /*--------------------------------------------------------------------------------------------------------------*/
         
         public ObservableCollection<Group> Groups { get; }
+        
+        #region SelectedGroup : Group - Номер выбранной вкладки 
+
+        /// <summary> Выбранная группа </summary>
+        private Group _SelectedGroup;
+
+        /// <summary> Выбранная группа </summary>
+        public Group SelectedGroup
+        {
+            get => _SelectedGroup;
+            set => Set(ref _SelectedGroup, value);
+        }
+
+        #endregion
 
         #region SelectedPageIndex : int - Номер выбранной вкладки 
 
