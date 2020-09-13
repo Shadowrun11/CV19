@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:CV19WPFTest"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <ResourceDictionary>
+        <!--<ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
 
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
@@ -13,6 +13,6 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+        </ResourceDictionary>-->
     </Application.Resources>
 </Application>
