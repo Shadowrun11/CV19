@@ -13,12 +13,12 @@ using System.Windows.Input;
 
 namespace CV19.ViewModels
 {
-    internal class MainWindowViewModel: ViewModel
+    internal class MainWindowViewModel : ViewModel
     {
         /*--------------------------------------------------------------------------------------------------------------*/
-        
+
         public ObservableCollection<Group> Groups { get; }
-        
+
         public object[] CompositeCollection { get; }
 
         /// <summary> Выбранный непонятный элемент </summary>
@@ -51,10 +51,10 @@ namespace CV19.ViewModels
         private int _SelectedPageIndex = 0;
 
         /// <summary> Номер выбранной вкладки </summary>
-        public int SelectedPageIndex 
-        { 
-            get => _SelectedPageIndex; 
-            set => Set(ref _SelectedPageIndex, value); 
+        public int SelectedPageIndex
+        {
+            get => _SelectedPageIndex;
+            set => Set(ref _SelectedPageIndex, value);
         }
 
         #endregion
@@ -88,7 +88,7 @@ namespace CV19.ViewModels
             // Set(ref _Title, value);
             //}
             set => Set(ref _Title, value);
-            
+
         }
         #endregion
 
@@ -120,6 +120,7 @@ namespace CV19.ViewModels
         }
         #endregion
 
+        #region ChangeTabIndexCommand
         public ICommand ChangeTabIndexCommand { get; }
 
         private bool CanChangeTabIndexCommandExecute(object p) => _SelectedPageIndex >= 0;
@@ -129,8 +130,40 @@ namespace CV19.ViewModels
             if (p is null) return;
             SelectedPageIndex += Convert.ToInt32(p);
         }
+        #endregion
 
-         
+        #region CreateGroupCommand
+        public ICommand CreateGroupCommand { get; }
+
+        private bool CanCreateGroupCommandExecute(object p) => true;
+
+        private void OnCreateGroupCommandExecute(object p)
+        {
+            int group_max_index = Groups.Count + 1;
+            var new_group = new Group
+            {
+                Name = $"Группа {group_max_index}",
+                Students = new ObservableCollection<Student>()
+            };
+
+            Groups.Add(new_group);
+        }
+        #endregion
+
+        #region DeleteGroupCommandand
+        public ICommand DeleteGroupCommand { get; }
+        private bool CanDeleteGroupCommandandExecute(object p) => p is Group group && Groups.Contains(group);
+
+        private void OnDeleteGroupCommandandExecute(object p)
+        {
+            if (!(p is Group group)) return;
+            var group_index = Groups.IndexOf(group);
+            Groups.Remove(group);
+            if (group_index < Groups.Count)
+                SelectedGroup = Groups[group_index];
+        }
+        #endregion
+
         #endregion
 
 
@@ -140,7 +173,9 @@ namespace CV19.ViewModels
 
             CloseApplicationCommand = new LambdaCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
             ChangeTabIndexCommand = new LambdaCommand(OnChangeTabIndexCommandExecute, CanChangeTabIndexCommandExecute);
-
+            CreateGroupCommand = new LambdaCommand(OnCreateGroupCommandExecute, CanCreateGroupCommandExecute);
+            DeleteGroupCommand = new LambdaCommand(OnDeleteGroupCommandandExecute, CanDeleteGroupCommandandExecute);
+            
             #endregion
 
             var date_points = new List<DataPoint>((int)(360 / 0.1)); 

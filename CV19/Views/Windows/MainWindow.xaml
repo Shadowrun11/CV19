@@ -135,22 +135,30 @@
 
                     <GroupBox Grid.Column="0" Header="Группы">
                         <!--DisplayMemberPath="Name"-->
-                        <ListBox ItemsSource="{Binding Groups}"                                  
+                        <DockPanel>
+                            <UniformGrid DockPanel.Dock="Bottom" Rows="1" Margin="0,3">
+                                <Button Content="Добавить" 
+                                        Margin="0,0,3,0"                                        
+                                        Command="{Binding CreateGroupCommand}"/>
+                                <Button Content="Удалить"  
+                                        Margin="0,0,3,0"
+                                        Command="{Binding DeleteGroupCommand}" CommandParameter="{Binding SelectedGroup}"/>
+                            </UniformGrid>
+                            <ListBox ItemsSource="{Binding Groups}"                                  
                                  
                                  SelectedItem="{Binding SelectedGroup}"
                                  SelectedIndex="0">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate DataType="decanate:Group">
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Name}"/>
-                                        <TextBlock Text="{Binding Students.Count, StringFormat=Студентов:{0}}" Margin="3,0,0,0"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate DataType="decanate:Group">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Name}"/>
+                                            <TextBlock Text="{Binding Students.Count, StringFormat=Студентов:{0}}" Margin="3,0,0,0"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
 
-                        </ListBox>
-
-
+                            </ListBox>
+                        </DockPanel>
                     </GroupBox>
 
                     <GroupBox Grid.Column="1" Header="{Binding SelectedGroup.Name, FallbackValue='Студенты', TargetNullValue='Группа не выбрана'}">
