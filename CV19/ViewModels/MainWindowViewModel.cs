@@ -2,10 +2,8 @@
 using CV19.Models;
 using CV19.ViewModels.Base;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace CV19.ViewModels
