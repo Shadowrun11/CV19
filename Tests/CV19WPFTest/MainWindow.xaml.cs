@@ -5,6 +5,6 @@
     /// </summary>
     public partial class MainWindow
     {
-        public MainWindow() => InitializeComponent();
+        public MainWindow() => InitializeComponent(); ghfjgfj
     }
 }
