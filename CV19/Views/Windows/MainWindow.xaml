@@ -55,7 +55,14 @@
                     <GroupBox Grid.Column="0" Header="Группы">
                         <!--DisplayMemberPath="Name"SelectedGroup-->
                         <DockPanel>
+                            <DockPanel  DockPanel.Dock="Top" Margin="0,3">
+                                <!--<TextBlock Text="Фильтр:"/>-->
+                                <fa:ImageAwesome Height="12" Icon="Solid_Search" Margin="3,0"/>
+                                <TextBox/>
+                            </DockPanel>
                             <UniformGrid DockPanel.Dock="Bottom" Rows="1" Margin="0,3">
+                                
+                                
                                 <Button Content="Добавить"
                                         Padding="0,7"
                                         Style="{StaticResource CheckButtonStyle}"
@@ -90,7 +97,14 @@
                     </GroupBox>
 
                     <GroupBox Grid.Column="1" Header="{Binding SelectedGroup.Name, FallbackValue='Студенты', TargetNullValue='Группа не выбрана'}">
-                        <DataGrid ItemsSource="{Binding SelectedGroup.Students}"
+                        <DockPanel>
+                            <DockPanel  DockPanel.Dock="Top" Margin="0,3">
+                                <!--<TextBlock Text="Фильтр:"/>-->
+                                <fa:ImageAwesome Height="12" Icon="Solid_Search" Margin="3,0"/>
+                                <TextBox/>
+                            </DockPanel>                           
+                            
+                            <DataGrid ItemsSource="{Binding SelectedGroup.Students}"
                                   AutoGenerateColumns="False"
                                   CanUserAddRows="True"                                  
                                   GridLinesVisibility="Vertical"
@@ -127,6 +141,7 @@
                                 <DataGridTextColumn Header="Заметки" Binding="{Binding Description}" Width="*"/>
                             </DataGrid.Columns>
                         </DataGrid>
+                        </DockPanel>
                     </GroupBox>
                 </Grid>
             </TabItem>
