@@ -45,6 +45,19 @@
             </StatusBar>
         </StatusBar>
         <TabControl SelectedIndex="{Binding SelectedPageIndex}">
+            <TabItem Header="Тестирование визуализации" >
+            <Grid>
+                    <!--<TextBlock Text="{Binding Source={x:Static local:App.IsDesignMode}}"/>-->
+                    <ListBox HorizontalAlignment="Left" Width="200" Margin="30"
+                             ItemsSource="{Binding TestStudents}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate DataType="decanat:Student">
+                                <TextBlock Text="{Binding Surname}" ToolTip="{Binding Name}"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>    
+            </TabItem>
             <TabItem Header="Студенты">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -92,7 +105,7 @@
                                     <DataTemplate DataType="decanate:Group">
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="{Binding Name}" Name="TextView"/>
-                                            <TextBlock Text="{Binding Students.Count, StringFormat=Студентов:{0}}" Margin="3,0,0,0"/>
+                                            <TextBlock Text="{Binding Students.Count, StringFormat=Студентов:{0}}" Margin="3,0,0,0" ToolTip="Ghbdtn"/>
                                         </StackPanel>
                                         <DataTemplate.Triggers>
                                             <DataTrigger Binding="{Binding Students.Count}" Value="0">
